@@ -1,34 +1,24 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { profile, sections } from "./links";
+import React, { useState } from "react";
+import { profile, sections, type ProjectItem } from "./links";
+import TypingAnimation from "@/components/TypingAnimation";
+import { useTheme } from "@/hooks/useTheme";
+import ProjectFilter from "@/components/ProjectFilter";
 import { 
   Menu, 
   X, 
   Sun, 
   Moon, 
-  Globe, 
-  Download, 
   ExternalLink, 
   ArrowUpRight, 
-  Terminal, 
   Clock
 } from "lucide-react";
 
 export default function Home() {
   const [lang, setLang] = useState<"en" | "id">("en");
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    // Sync class list with theme state
-    const root = document.documentElement;
-    if (theme === "dark") {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
-  }, [theme]);
 
   // Set project total count and completed count
   const totalProjectsLimit = 50;
@@ -58,7 +48,21 @@ export default function Home() {
       challengeTitle: "50 Projects Challenge",
       challengeDesc: "A self-driven roadmap to design, build, and deploy 50 real-world applications before September 2026. This self-imposed pressure forces continuous coding, quick pivots, and rapid acquisition of new technical skills.",
       aboutText: "I am an Information Systems student at Universitas Bina Sarana Informatika (UBSI), specialized in building production-grade full-stack systems, automation scripts, and exploring Gemini / LLM integrations.",
-      resultHeader: "Results are Everything"
+      resultHeader: "Results are Everything",
+      // Filter
+      searchPlaceholder: "Search projects...",
+      filterAll: "All",
+      filterFavorites: "Favorites",
+      filterWeb: "Web",
+      filterMobile: "Mobile",
+      filterCli: "CLI",
+      sortBy: "Sort",
+      sortDefault: "Default",
+      sortNumAsc: "Number ↑",
+      sortNumDesc: "Number ↓",
+      sortNameAsc: "Name A-Z",
+      sortNameDesc: "Name Z-A",
+      noResults: "No projects match your filters.",
     },
     id: {
       about: "Tentang",
@@ -82,7 +86,21 @@ export default function Home() {
       challengeTitle: "Tantangan 50 Projek",
       challengeDesc: "Peta jalan mandiri untuk merancang, membangun, dan menyebarkan 50 aplikasi dunia nyata sebelum September 2026. Tekanan mandiri ini memaksa saya untuk terus menulis kode, beradaptasi cepat, dan menguasai keahlian teknis baru.",
       aboutText: "Saya adalah mahasiswa Sistem Informasi di Universitas Bina Sarana Informatika (UBSI), spesialisasi dalam membangun sistem full-stack siap produksi, skrip otomatisasi, serta eksplorasi integrasi Gemini / LLM.",
-      resultHeader: "Hasil Adalah Segalanya"
+      resultHeader: "Hasil Adalah Segalanya",
+      // Filter
+      searchPlaceholder: "Cari proyek...",
+      filterAll: "Semua",
+      filterFavorites: "Favorit",
+      filterWeb: "Web",
+      filterMobile: "Mobile",
+      filterCli: "CLI",
+      sortBy: "Urutkan",
+      sortDefault: "Default",
+      sortNumAsc: "Nomor ↑",
+      sortNumDesc: "Nomor ↓",
+      sortNameAsc: "Nama A-Z",
+      sortNameDesc: "Nama Z-A",
+      noResults: "Tidak ada proyek yang cocok.",
     }
   };
 
@@ -90,10 +108,6 @@ export default function Home() {
 
   const toggleLanguage = () => {
     setLang((prev) => (prev === "en" ? "id" : "en"));
-  };
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
   const getStatusLabel = (status?: string) => {
@@ -119,16 +133,6 @@ export default function Home() {
     status: string;
     year: string;
     url: string;
-  }
-
-  interface ProjectListItem {
-    id: string;
-    projectNumber: string;
-    label: string;
-    description: string;
-    isFavorite: boolean;
-    tags: string[];
-    links: { type: string; url: string }[];
   }
 
   interface CertItem {
@@ -281,10 +285,9 @@ export default function Home() {
           {profile.role}
         </p>
 
-        {/* Dynamic Typing-SVG Replacement */}
-        <div className="h-8 flex items-center justify-center bg-neutral-100 dark:bg-neutral-900 px-4 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-800 font-mono text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">
-          <Terminal className="w-3.5 h-3.5 mr-2 text-blue-500" />
-          <span>Building Digital Solutions & Automating Workflows</span>
+        {/* Dynamic Typing Animation */}
+        <div className="w-full max-w-md mx-auto">
+          <TypingAnimation />
         </div>
 
         <div className="mt-8 flex gap-4">
@@ -436,98 +439,25 @@ motto: "${profile.philosophy}"`}
           </div>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid sm:grid-cols-2 gap-6">
-          {projectsList.map((item) => {
-            const p = item as ProjectListItem;
-            return (
-              <div 
-                key={p.id} 
-                className="border border-neutral-200 dark:border-neutral-800 rounded-lg p-5 bg-white dark:bg-[#0a0a0a] hover:border-neutral-300 dark:hover:border-neutral-700 transition-all flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="font-mono text-xs text-blue-500 dark:text-blue-400 font-bold">
-                      {p.projectNumber}
-                    </span>
-                    <h3 className="font-semibold text-neutral-900 dark:text-white">
-                      {p.label}
-                    </h3>
-                    {p.isFavorite && (
-                      <span className="px-1.5 py-0.5 text-[9px] bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 rounded border border-yellow-500/20 font-semibold">
-                        Star
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
-                    {p.description}
-                  </p>
-                  <div className="flex flex-wrap gap-1.5 mb-6">
-                    {p.tags.map((tag: string) => (
-                      <span 
-                        key={tag} 
-                        className="px-2 py-0.5 text-[10px] rounded bg-neutral-50 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 font-mono"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Action Links */}
-                <div className="flex flex-wrap gap-2 pt-3 border-t border-neutral-100 dark:border-neutral-900">
-                  {p.links.map((link, idx) => {
-                    if (link.type === "repo") {
-                      return (
-                        <a 
-                          key={idx}
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800 text-xs font-mono transition-colors text-neutral-800 dark:text-neutral-200"
-                        >
-                          <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.197 22 16.44 22 12.017 22 6.484 17.522 2 12 2z" />
-                          </svg>
-                          <span>{t.viewCode}</span>
-                        </a>
-                      );
-                    }
-                    if (link.type === "web") {
-                      return (
-                        <a 
-                          key={idx}
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-blue-500 hover:bg-blue-600 text-white text-xs font-mono transition-colors"
-                        >
-                          <Globe className="w-3.5 h-3.5" />
-                          <span>{t.viewProject}</span>
-                        </a>
-                      );
-                    }
-                    if (link.type === "download") {
-                      return (
-                        <a 
-                          key={idx}
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-neutral-900 hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-200 text-white dark:text-black text-xs font-mono transition-colors"
-                        >
-                          <Download className="w-3.5 h-3.5" />
-                          <span>{t.downloadApp}</span>
-                        </a>
-                      );
-                    }
-                    return null;
-                  })}
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <ProjectFilter
+          projects={projectsList as ProjectItem[]}
+          translations={{
+            searchPlaceholder: t.searchPlaceholder,
+            all: t.filterAll,
+            favorites: t.filterFavorites,
+            web: t.filterWeb,
+            mobile: t.filterMobile,
+            cli: t.filterCli,
+            featured: t.featured,
+            sortBy: t.sortBy,
+            sortDefault: t.sortDefault,
+            sortNumAsc: t.sortNumAsc,
+            sortNumDesc: t.sortNumDesc,
+            sortNameAsc: t.sortNameAsc,
+            sortNameDesc: t.sortNameDesc,
+            noResults: t.noResults,
+          }}
+        />
       </section>
 
       {/* Certificates Section */}
