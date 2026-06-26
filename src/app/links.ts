@@ -8,7 +8,7 @@ export interface LinkItem {
   label: string;
   url: string;
   icon?: string;
-  description?: string;
+  description?: string | { en: string; id: string };
   isExternal?: boolean;
   isFavorite?: boolean;
   type?: "nasional" | "internasional";
@@ -30,7 +30,7 @@ export interface ProjectItem {
   id: string;
   projectNumber: string;
   label: string;
-  description: string;
+  description: string | { en: string; id: string };
   isFavorite: boolean;
   tags: string[];
   links: ProjectLink[];
@@ -72,7 +72,10 @@ export const sections: LinkSection[] = [
         label: "Curzy Cloud",
         url: "https://github.com/Curzyori/CurzyCloud",
         icon: "fa-cloud",
-        description: "Layanan Game Server Hosting (Minecraft Java/Bedrock) dan script custom automation yang beroperasi penuh pada periode 2024 - 2026. Platform ini memanfaatkan arsitektur Pterodactyl Panel, integrasi database Supabase Realtime, serta otomatisasi payment gateway berbasis Crypto (USDT BEP-20). Saat ini proyek telah selesai diarsipkan, dan seluruh aktivitas komunitas dialihkan ke Saluran WhatsApp resmi.",
+        description: {
+          en: "Game Server Hosting Service (Minecraft Java/Bedrock) and custom automation scripts fully operational from 2024 to 2026. The platform utilized the Pterodactyl Panel architecture, Supabase Realtime integration, and automated Web3/Crypto (USDT BEP-20) payment gateway. Currently, the project is officially archived, and community activities are redirected to the official WhatsApp Channel.",
+          id: "Layanan Game Server Hosting (Minecraft Java/Bedrock) dan script custom automation yang beroperasi penuh pada periode 2024 - 2026. Platform ini memanfaatkan arsitektur Pterodactyl Panel, integrasi database Supabase Realtime, serta otomatisasi payment gateway berbasis Crypto (USDT BEP-20). Saat ini proyek telah selesai diarsipkan, dan seluruh aktivitas komunitas dialihkan ke Saluran WhatsApp resmi."
+        },
         isExternal: true,
         isFavorite: true,
         type: "internasional",
@@ -85,7 +88,10 @@ export const sections: LinkSection[] = [
         label: "Curzy Market (Coming Soon)",
         url: "https://github.com/Curzyori",
         icon: "fa-shopping-bag",
-        description: "Global digital marketplace and development agency disiapkan eksklusif dengan payment gateway berbasis Web3/Crypto (tanpa fiat/metode lokal). Menjadi pusat distribusi aset digital premium seperti Automation Scripts, CLI tools, Template Website, aplikasi Premium (Free Trial & Premium dari 50 Projects Challenge), hingga layanan komersial komputasi seperti Joki Tugas Engineering dan Jasa Pembuatan Website Kustom (Buy Custom Website).",
+        description: {
+          en: "Global digital marketplace and development agency prepared exclusively with Web3/Crypto payment gateways (no fiat/local methods). It serves as a distribution hub for premium digital assets such as automation scripts, CLI tools, website templates, premium applications (from the 50 Projects Challenge), and commercial computing services.",
+          id: "Global digital marketplace and development agency disiapkan eksklusif dengan payment gateway berbasis Web3/Crypto (tanpa fiat/metode lokal). Menjadi pusat distribusi aset digital premium seperti Automation Scripts, CLI tools, Template Website, aplikasi Premium dari 50 Projects Challenge, hingga layanan komersial komputasi."
+        },
         isExternal: true,
         isFavorite: false,
         type: "internasional",
@@ -103,7 +109,10 @@ export const sections: LinkSection[] = [
         id: "zero-cache",
         projectNumber: "#16",
         label: "ZeroCache",
-        description: "ZeroCache - One-tap Android cache cleaner with Root & No-Root modes. Apache 2.0.",
+        description: {
+          en: "ZeroCache - One-tap Android cache cleaner with Root & No-Root modes. Apache 2.0.",
+          id: "ZeroCache - Pembersih cache Android sekali ketuk dengan mode Root & Tanpa Root. Apache 2.0."
+        },
         isFavorite: false,
         tags: ["Kotlin", "Android", "Root", "Utility", "Open Source", "Privacy"],
         links: [
@@ -115,7 +124,10 @@ export const sections: LinkSection[] = [
         id: "pass-qr",
         projectNumber: "#15",
         label: "PassQR",
-        description: "PassQR - Instant QR to Web & App access. Scan any QR code to open in browser or in-app WebView. Supports English and Indonesian.",
+        description: {
+          en: "PassQR - Instant QR to Web & App access. Scan any QR code to open in browser or in-app WebView. Supports English and Indonesian.",
+          id: "PassQR - Akses instan QR ke Web & Aplikasi. Pindai kode QR apa pun untuk membukanya di browser atau WebView bawaan aplikasi. Mendukung bahasa Inggris dan Indonesia."
+        },
         isFavorite: false,
         tags: ["Kotlin", "Android", "WebView", "QR Code", "Open Source", "Privacy"],
         links: [
@@ -127,7 +139,10 @@ export const sections: LinkSection[] = [
         id: "pharma-stock",
         projectNumber: "#14",
         label: "PharmaStock",
-        description: "Sistem Manajemen Inventaris & Keuangan Apotek — Dashboard finansial, deteksi stok kritis, RBAC multi-role, PPN/PPh otomatis.",
+        description: {
+          en: "Pharmacy Inventory & Financial Management System — Financial dashboard, critical stock detection, multi-role RBAC, and automated VAT/Income Tax calculations.",
+          id: "Sistem Manajemen Inventaris & Keuangan Apotek — Dashboard finansial, deteksi stok kritis, RBAC multi-role, PPN/PPh otomatis."
+        },
         isFavorite: false,
         tags: ["Python", "Flask", "Healthcare", "Pharmacy", "Finance", "PWA", "Dashboard", "Open Source", "Supabase"],
         links: [
@@ -140,7 +155,10 @@ export const sections: LinkSection[] = [
         id: "github-searcher",
         projectNumber: "#13",
         label: "Github Searcher",
-        description: "Asynchronous GitHub repository & code scanner CLI with Dual-Engine (Browser Session & API Token). Built with Python asyncio.",
+        description: {
+          en: "Asynchronous GitHub repository & code scanner CLI with Dual-Engine (Browser Session & API Token). Built with Python asyncio.",
+          id: "Pemindai repositori & kode GitHub asinkron berbasis CLI dengan Dual-Engine (Sesi Browser & Token API). Dibuat dengan Python asyncio."
+        },
         isFavorite: false,
         tags: ["Python", "Git", "Scraper", "CLI", "API", "Asyncio", "Automation", "Open Source"],
         links: [
@@ -151,7 +169,10 @@ export const sections: LinkSection[] = [
         id: "portofolio-template",
         projectNumber: "#12",
         label: "Portofolio Template",
-        description: "Premium mobile-first link hub & portfolio developer dengan Terminal Glass UI theme. 100% static, zero maintenance, MIT license.",
+        description: {
+          en: "Premium mobile-first link hub & developer portfolio with Terminal Glass UI theme. 100% static, zero maintenance, MIT license.",
+          id: "Template premium mobile-first link hub & portofolio developer dengan tema Terminal Glass UI. 100% statis, bebas perawatan, lisensi MIT."
+        },
         isFavorite: true,
         tags: ["TypeScript", "Next.js", "Tailwind CSS", "Portfolio", "Template", "Terminal", "Glass UI", "Open Source"],
         links: [
@@ -163,7 +184,10 @@ export const sections: LinkSection[] = [
         id: "c-lync",
         projectNumber: "#11",
         label: "C Lync",
-        description: "SaaS Manajemen & Otomatisasi WhatsApp Berbasis Google AI. Kurangi chat-overload dengan AI summarization & dynamic contact memory.",
+        description: {
+          en: "WhatsApp Management & Automation SaaS Powered by Google AI. Mitigate chat overload with automated AI summarization & dynamic contact memory.",
+          id: "SaaS Manajemen & Otomatisasi WhatsApp Berbasis Google AI. Kurangi chat-overload dengan AI summarization & dynamic contact memory."
+        },
         isFavorite: true,
         tags: ["React", "Express", "TypeScript", "AI", "Chatbot", "Automation", "Open Source", "Supabase"],
         links: [
@@ -175,7 +199,10 @@ export const sections: LinkSection[] = [
         id: "float-volume",
         projectNumber: "#10",
         label: "Float Volume",
-        description: "Free, ad-free, and privacy-friendly floating volume control application for Android devices, designed with Material Design 3 and Prestige-Safe Stealth Aesthetic.",
+        description: {
+          en: "Free, ad-free, and privacy-friendly floating volume control application for Android devices, designed with Material Design 3 and Prestige-Safe Stealth Aesthetic.",
+          id: "Aplikasi kontrol volume melayang bebas iklan dan ramah privasi untuk perangkat Android, dirancang dengan Material Design 3 dan Prestige-Safe Stealth Aesthetic."
+        },
         isFavorite: true,
         tags: ["Kotlin", "Android", "Accessibility", "Privacy", "Volume Control", "Open Source"],
         links: [
@@ -187,7 +214,10 @@ export const sections: LinkSection[] = [
         id: "check-ip",
         projectNumber: "#09",
         label: "Check IP",
-        description: "Fast, simple, and beautiful web tool to check your public IP address and lookup any IP. Instantly shows IP, location, ISP, and timezone. Built with Next.js.",
+        description: {
+          en: "Fast, simple, and beautiful web tool to check your public IP address and lookup any IP. Instantly shows IP, location, ISP, and timezone. Built with Next.js.",
+          id: "Alat web cepat, sederhana, dan cantik untuk memeriksa alamat IP publik Anda dan pencarian IP apa pun. Instan menampilkan IP, lokasi, ISP, dan zona waktu."
+        },
         isFavorite: true,
         tags: ["TypeScript", "Next.js", "Tailwind CSS", "IP Checker", "Geolocation", "Networking Tool"],
         links: [
@@ -199,7 +229,10 @@ export const sections: LinkSection[] = [
         id: "c-vault",
         projectNumber: "#08",
         label: "C Vault",
-        description: "Decentralized intelligence library for digital assets. Content collections with Zod-validated security levels, encryption layer, archive workflows. Astro 6 + Tailwind CSS v4.",
+        description: {
+          en: "Decentralized intelligence library for digital assets. Content collections with Zod-validated security levels, encryption layer, archive workflows. Astro 6 + Tailwind CSS v4.",
+          id: "Perpustakaan intelijen terdesentralisasi untuk aset digital. Koleksi konten dengan tingkat keamanan yang divalidasi Zod, lapisan enkripsi, alur kerja arsip. Astro 6 + Tailwind CSS v4."
+        },
         isFavorite: false,
         tags: ["Astro", "Tailwind CSS", "Markdown", "Security", "Vault", "Knowledge Management", "Productivity"],
         links: [
@@ -210,7 +243,10 @@ export const sections: LinkSection[] = [
         id: "4-mate",
         projectNumber: "#07",
         label: "4 Mate",
-        description: "Multi-Platform Media Downloader for Spotify, Instagram, YouTube & TikTok. Ad-free, forced-download proxy via Edge Runtime. Next.js 16 + Tailwind v4.",
+        description: {
+          en: "Multi-Platform Media Downloader for Spotify, Instagram, YouTube & TikTok. Ad-free, forced-download proxy via Edge Runtime. Next.js 16 + Tailwind v4.",
+          id: "Pengunduh Media Multi-Platform untuk Spotify, Instagram, YouTube & TikTok. Bebas iklan, proxy forced-download memanfaatkan Edge Runtime. Next.js 16 + Tailwind v4."
+        },
         isFavorite: true,
         tags: ["TypeScript", "Next.js", "Downloader", "Spotify", "Instagram", "YouTube", "TikTok", "Open Source"],
         links: [
@@ -222,7 +258,10 @@ export const sections: LinkSection[] = [
         id: "c-story",
         projectNumber: "#06",
         label: "C Story",
-        description: "Interactive Storyboard Engine for the Curzy Ecosystem. Built with Astro + React, markdown-driven narratives with dynamic interactivity.",
+        description: {
+          en: "Interactive Storyboard Engine for the Curzy Ecosystem. Built with Astro + React, markdown-driven narratives with dynamic interactivity.",
+          id: "Mesin Storyboard Interaktif untuk Ekosistem Curzy. Dibangun dengan Astro + React, narasi berbasis markdown dengan interaktivitas dinamis."
+        },
         isFavorite: false,
         tags: ["Astro", "React", "Markdown", "MDX", "Storyboard", "Content Generator"],
         links: [
@@ -234,7 +273,10 @@ export const sections: LinkSection[] = [
         id: "c-math",
         projectNumber: "#05",
         label: "C Math",
-        description: "Precision-engineered calculator and financial engine. Built with React + Vite, powered by math.js for advanced computations.",
+        description: {
+          en: "Precision-engineered calculator and financial engine. Built with React + Vite, powered by math.js for advanced computations.",
+          id: "Kalkulator dan mesin keuangan berpresisi tinggi. Dibangun dengan React + Vite, didukung oleh math.js untuk komputasi tingkat lanjut."
+        },
         isFavorite: false,
         tags: ["JavaScript", "React", "Vite", "Calculator", "Finance App", "MathJS", "CLI", "Python"],
         links: [
@@ -246,7 +288,10 @@ export const sections: LinkSection[] = [
         id: "c-flow",
         projectNumber: "#04",
         label: "C Flow",
-        description: "🎵 Premium local audio hub & music visualizer with glassmorphism UI. Features local folder scanning, metadata extraction, daily listening streaks. React + Tailwind CSS v4, Express, music-metadata.",
+        description: {
+          en: "Premium local audio hub & music visualizer with glassmorphism UI. Features local folder scanning, metadata extraction, daily listening streaks. React + Tailwind CSS v4, Express, music-metadata.",
+          id: "Pusat audio lokal & visualisator musik premium dengan UI glassmorphic. Menampilkan pemindaian folder lokal, ekstraksi metadata, skor beruntun harian. React + Tailwind CSS v4, Express, music-metadata."
+        },
         isFavorite: false,
         tags: ["JavaScript", "React", "Express", "Glassmorphism", "Audio", "Music Player", "Visualization"],
         links: [
@@ -258,7 +303,10 @@ export const sections: LinkSection[] = [
         id: "curzy-vitality",
         projectNumber: "#03",
         label: "Curzy Vitality",
-        description: "🧠 Background productivity tracker & Life OS daemon. Tracks active application times in SQLite, calculates burnout risk, and gamifies work via achievements. React + Tailwind v4, Express, better-sqlite3.",
+        description: {
+          en: "Background productivity tracker & Life OS daemon. Tracks active application times in SQLite, calculates burnout risk, and gamifies work via achievements. React + Tailwind v4, Express, better-sqlite3.",
+          id: "Pelacak produktivitas latar belakang & daemon Life OS. Melacak waktu aplikasi aktif di SQLite, menghitung risiko burnout, dan gamifikasi kerja melalui pencapaian. React + Tailwind v4, Express, better-sqlite3."
+        },
         isFavorite: false,
         tags: ["JavaScript", "React", "Express", "SQLite", "Productivity Tool", "Gamification", "Life OS", "Wellness"],
         links: [
@@ -269,7 +317,10 @@ export const sections: LinkSection[] = [
         id: "c-dashboard",
         projectNumber: "#02",
         label: "C Dashboard",
-        description: "🖥️ Real-time system Command Center. Monitor CPU/Memory, control processes, historical logs in SQLite. React + Vite + Tailwind CSS v4, Node.js + Socket.io & systeminformation.",
+        description: {
+          en: "Real-time system Command Center. Monitor CPU/Memory, control processes, historical logs in SQLite. React + Vite + Tailwind CSS v4, Node.js + Socket.io & systeminformation.",
+          id: "Pusat Komando sistem waktu nyata. Pantau CPU/Memori, kontrol proses, log historis dalam SQLite. React + Vite + Tailwind CSS v4, Node.js + Socket.io & systeminformation."
+        },
         isFavorite: false,
         tags: ["JavaScript", "React", "Node.js", "Socket.io", "SQLite", "System Monitor", "Productivity"],
         links: [
@@ -280,7 +331,10 @@ export const sections: LinkSection[] = [
         id: "zafkiel-arcade",
         projectNumber: "#01",
         label: "Zafkiel Arcade",
-        description: "Zafkiel Arcade is a high-stakes, time-manipulating survival game inspired by the aesthetic of Kurumi Tokisaki. Unlike standard arcade clones, Zafkiel integrates a full Modular Monolith backend to track highscores, enforce zero-trust inputs, and stream real-time temporal state.",
+        description: {
+          en: "Zafkiel Arcade is a high-stakes, time-manipulating survival game inspired by the aesthetic of Kurumi Tokisaki. Unlike standard arcade clones, Zafkiel integrates a full Modular Monolith backend to track highscores, enforce zero-trust inputs, and stream real-time temporal state.",
+          id: "Zafkiel Arcade adalah permainan bertahan hidup manipulasi waktu berisiko tinggi yang terinspirasi oleh estetika Kurumi Tokisaki. Dilengkapi backend Monolit Modular untuk melacak skor, validasi input, dan streaming status waktu nyata."
+        },
         isFavorite: false,
         tags: ["JavaScript", "React", "Express", "Modular Monolith", "SQLite", "Survival Game", "Time Manipulation"],
         links: [
@@ -298,7 +352,10 @@ export const sections: LinkSection[] = [
         id: "google-ai",
         label: "Google AI Professional Certificate",
         issuer: "Google & Coursera",
-        description: "Spesialisasi Profesional dari Google. Diselesaikan dalam waktu sekitar 1 bulan dengan intensitas belajar 2 jam per minggu. Mencakup 7 modul utama: AI Fundamentals, Brainstorming & Planning, Research & Insights, Writing & Communication, Content Creation, Data Analysis, hingga App Building.",
+        description: {
+          en: "Professional Specialization from Google. Completed in approximately 1 month with 2 hours of study per week. Covers 7 main modules: AI Fundamentals, Brainstorming & Planning, Research & Insights, Writing & Communication, Content Creation, Data Analysis, and App Building.",
+          id: "Spesialisasi Profesional dari Google. Diselesaikan dalam waktu sekitar 1 bulan dengan intensitas belajar 2 jam per minggu. Mencakup 7 modul utama: AI Fundamentals, Brainstorming & Planning, Research & Insights, Writing & Communication, Content Creation, Data Analysis, hingga App Building."
+        },
         url: "/certificates/google-ai.pdf",
         isExternal: true,
         type: "internasional",

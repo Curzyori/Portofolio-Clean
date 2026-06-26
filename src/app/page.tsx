@@ -50,6 +50,12 @@ export default function Home() {
       challengeDesc: "A self-driven roadmap to design, build, and deploy 50 real-world applications before September 2026. This self-imposed pressure forces continuous coding, quick pivots, and rapid acquisition of new technical skills.",
       aboutText: "I am an Information Systems student at Universitas Bina Sarana Informatika (UBSI), specialized in building production-grade full-stack systems, automation scripts, and exploring Gemini / LLM integrations.",
       resultHeader: "Results are Everything",
+      // Missing keys
+      challengeProgress: "Challenge Progress:",
+      projectsSubtitle: "List of built challenges as part of the 50 Projects roadmap.",
+      pdfDocument: "PDF Document",
+      footerText: "Built with passion from Pontianak, Indonesia",
+      majorLabel: "Information Systems",
       // Filter
       searchPlaceholder: "Search projects...",
       filterAll: "All",
@@ -88,6 +94,12 @@ export default function Home() {
       challengeDesc: "Peta jalan mandiri untuk merancang, membangun, dan menyebarkan 50 aplikasi dunia nyata sebelum September 2026. Tekanan mandiri ini memaksa saya untuk terus menulis kode, beradaptasi cepat, dan menguasai keahlian teknis baru.",
       aboutText: "Saya adalah mahasiswa Sistem Informasi di Universitas Bina Sarana Informatika (UBSI), spesialisasi dalam membangun sistem full-stack siap produksi, skrip otomatisasi, serta eksplorasi integrasi Gemini / LLM.",
       resultHeader: "Hasil Adalah Segalanya",
+      // Missing keys
+      challengeProgress: "Progress Tantangan:",
+      projectsSubtitle: "Daftar tantangan yang dibangun sebagai bagian dari peta jalan 50 Projek.",
+      pdfDocument: "Dokumen PDF",
+      footerText: "Dibuat dengan dedikasi dari Pontianak, Indonesia",
+      majorLabel: "Sistem Informasi",
       // Filter
       searchPlaceholder: "Cari proyek...",
       filterAll: "Semua",
@@ -195,7 +207,7 @@ export default function Home() {
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                 <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.197 22 16.44 22 12.017 22 6.484 17.522 2 12 2z" />
               </svg>
-              <span>Challenge Progress:</span>
+              <span>{t.challengeProgress}</span>
               <span className="font-semibold text-blue-500 dark:text-blue-400">{completedProjectsCount}/{totalProjectsLimit}</span>
             </a>
 
@@ -294,7 +306,7 @@ export default function Home() {
 
         {/* Dynamic Typing Animation */}
         <div className="w-full max-w-md mx-auto">
-          <TypingAnimation />
+          <TypingAnimation lang={lang} />
         </div>
 
         <div className="mt-8 flex gap-4">
@@ -357,7 +369,7 @@ export default function Home() {
 age: 18
 loc: Pontianak, ID
 college: UBSI
-major: Information Systems
+major: ${t.majorLabel}
 focus: Full-Stack & AI
 motto: "${profile.philosophy}"`}
               </pre>
@@ -391,6 +403,7 @@ motto: "${profile.philosophy}"`}
         <div className="grid md:grid-cols-2 gap-6">
           {sections.find((s) => s.id === "bisnis")?.items.map((biz) => {
             const b = biz as BizItem;
+            const desc = typeof b.description === "object" ? b.description[lang] : b.description;
             return (
               <div 
                 key={b.id} 
@@ -410,7 +423,7 @@ motto: "${profile.philosophy}"`}
                     </span>
                   </div>
                   <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
-                    {b.description}
+                    {desc}
                   </p>
                 </div>
                 <div className="flex items-center justify-between pt-2 border-t border-neutral-100 dark:border-neutral-900 mt-2">
@@ -441,13 +454,14 @@ motto: "${profile.philosophy}"`}
               {t.allProjects}
             </h2>
             <p className="text-sm text-neutral-500 dark:text-neutral-400 mt-1">
-              List of built challenges as part of the 50 Projects roadmap.
+              {t.projectsSubtitle}
             </p>
           </div>
         </div>
 
         <ProjectFilter
           projects={projectsList as ProjectItem[]}
+          lang={lang}
           translations={{
             searchPlaceholder: t.searchPlaceholder,
             all: t.filterAll,
@@ -475,6 +489,7 @@ motto: "${profile.philosophy}"`}
         <div className="border border-neutral-200 dark:border-neutral-800 rounded-lg p-5 bg-neutral-50 dark:bg-neutral-900/10">
           {sections.find((s) => s.id === "certificates")?.items.map((cert) => {
             const c = cert as CertItem;
+            const desc = typeof c.description === "object" ? c.description[lang] : c.description;
             return (
               <div key={c.id} className="flex flex-col justify-between">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
@@ -491,7 +506,7 @@ motto: "${profile.philosophy}"`}
                   </span>
                 </div>
                 <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
-                  {c.description}
+                  {desc}
                 </p>
                 <div className="flex">
                   <a 
@@ -500,7 +515,7 @@ motto: "${profile.philosophy}"`}
                     rel="noopener noreferrer" 
                     className="flex items-center text-xs text-blue-500 hover:underline font-semibold gap-1"
                   >
-                    <span>PDF Document</span>
+                    <span>{t.pdfDocument}</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
@@ -541,7 +556,7 @@ motto: "${profile.philosophy}"`}
 
       {/* Footer */}
       <footer className="border-t border-neutral-100 dark:border-neutral-900 py-12 bg-neutral-50 dark:bg-neutral-950/20 text-center text-xs text-neutral-400">
-        <p className="mb-2">⚡ Built with passion from Pontianak, Indonesia</p>
+        <p className="mb-2">⚡ {t.footerText}</p>
         <p className="font-mono text-[10px]">&copy; 2026 Yuken Velino (Curzyori)</p>
       </footer>
     </div>

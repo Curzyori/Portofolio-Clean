@@ -2,25 +2,44 @@
 
 import React, { useState, useEffect, useRef } from "react";
 
-const phrases = [
-  "Building Digital Solutions 🚀",
-  "Automating Everything I Can ⚙️",
-  "Learning Never Stops 📚",
-];
+const phrases = {
+  en: [
+    "Building Digital Solutions 🚀",
+    "Automating Everything I Can ⚙️",
+    "Learning Never Stops 📚",
+  ],
+  id: [
+    "Membangun Solusi Digital 🚀",
+    "Mengotomatiskan Semua yang Saya Bisa ⚙️",
+    "Belajar Tidak Pernah Berhenti 📚",
+  ]
+};
 
 const TYPING_SPEED = 60;
 const PAUSE_BETWEEN = 1500;
 const ERASE_SPEED = 30;
 const PAUSE_AFTER_ERASE = 500;
 
-export default function TypingAnimation() {
+interface TypingAnimationProps {
+  lang: "en" | "id";
+}
+
+export default function TypingAnimation({ lang }: TypingAnimationProps) {
   const [displayText, setDisplayText] = useState("");
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Reset index and state if language switches mid-typing
   useEffect(() => {
-    const currentPhrase = phrases[phraseIndex];
+    setPhraseIndex(0);
+    setDisplayText("");
+    setIsTyping(true);
+  }, [lang]);
+
+  useEffect(() => {
+    const currentPhrases = phrases[lang];
+    const currentPhrase = currentPhrases[phraseIndex];
 
     const type = () => {
       if (!isTyping) {
@@ -31,7 +50,7 @@ export default function TypingAnimation() {
         } else {
           // Done erasing, move to next phrase
           setIsTyping(true);
-          setPhraseIndex((prev) => (prev + 1) % phrases.length);
+          setPhraseIndex((prev) => (prev + 1) % currentPhrases.length);
           timeoutRef.current = setTimeout(type, PAUSE_AFTER_ERASE);
         }
       } else {
@@ -55,7 +74,7 @@ export default function TypingAnimation() {
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [phraseIndex, isTyping, displayText]);
+  }, [phraseIndex, isTyping, displayText, lang]);
 
   return (
     <div className="h-8 flex items-center justify-center bg-neutral-100 dark:bg-neutral-900 px-4 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-800 font-mono text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">

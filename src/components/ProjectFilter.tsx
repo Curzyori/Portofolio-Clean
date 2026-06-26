@@ -7,7 +7,7 @@ interface ProjectItem {
   id: string;
   projectNumber: string;
   label: string;
-  description: string;
+  description: string | { en: string; id: string };
   isFavorite: boolean;
   tags: string[];
   links: { type: string; url: string; label?: string }[];
@@ -18,6 +18,7 @@ type SortType = "default" | "number-asc" | "number-desc" | "name-asc" | "name-de
 
 interface ProjectFilterProps {
   projects: ProjectItem[];
+  lang: "en" | "id";
   translations: {
     searchPlaceholder: string;
     all: string;
@@ -36,7 +37,7 @@ interface ProjectFilterProps {
   };
 }
 
-export default function ProjectFilter({ projects, translations: t }: ProjectFilterProps) {
+export default function ProjectFilter({ projects, lang, translations: t }: ProjectFilterProps) {
   const [search, setSearch] = useState("");
   const [activeFilter, setActiveFilter] = useState<FilterType>("all");
   const [sortBy, setSortBy] = useState<SortType>("default");
@@ -56,10 +57,14 @@ export default function ProjectFilter({ projects, translations: t }: ProjectFilt
     if (search) {
       const q = search.toLowerCase();
       result = result.filter(
-        (p) =>
-          p.label.toLowerCase().includes(q) ||
-          p.description.toLowerCase().includes(q) ||
-          p.tags.some((tag) => tag.toLowerCase().includes(q))
+        (p) => {
+          const desc = typeof p.description === "object" ? p.description[lang] : p.description;
+          return (
+            p.label.toLowerCase().includes(q) ||
+            desc.toLowerCase().includes(q) ||
+            p.tags.some((tag) => tag.toLowerCase().includes(q))
+          );
+        }
       );
     }
 
@@ -107,7 +112,7 @@ export default function ProjectFilter({ projects, translations: t }: ProjectFilt
     }
 
     return result;
-  }, [projects, search, activeFilter, activeTag, sortBy]);
+  }, [projects, search, activeFilter, activeTag, sortBy, lang]);
 
   const clearFilters = () => {
     setSearch("");
@@ -265,7 +270,7 @@ export default function ProjectFilter({ projects, translations: t }: ProjectFilt
       {/* Projects Grid */}
       <div className="grid sm:grid-cols-2 gap-6">
         {filteredProjects.map((p) => (
-          <ProjectCard key={p.id} project={p} />
+          <ProjectCard key={p.id} project={p} lang={lang} />
         ))}
         {filteredProjects.length === 0 && (
           <div className="col-span-2 text-center py-12 text-neutral-500 dark:text-neutral-400">
@@ -278,7 +283,9 @@ export default function ProjectFilter({ projects, translations: t }: ProjectFilt
 }
 
 // Inline ProjectCard component
-function ProjectCard({ project: p }: { project: ProjectItem }) {
+function ProjectCard({ project: p, lang }: { project: ProjectItem; lang: "en" | "id" }) {
+  const descriptionText = typeof p.description === "object" ? p.description[lang] : p.description;
+
   return (
     <div className="border border-neutral-200 dark:border-neutral-800 rounded-lg p-5 bg-white dark:bg-[#0a0a0a] hover:border-neutral-300 dark:hover:border-neutral-700 transition-all flex flex-col justify-between">
       <div>
@@ -296,7 +303,7 @@ function ProjectCard({ project: p }: { project: ProjectItem }) {
           )}
         </div>
         <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
-          {p.description}
+          {descriptionText}
         </p>
         <div className="flex flex-wrap gap-1.5 mb-6">
           {p.tags.map((tag: string) => (
