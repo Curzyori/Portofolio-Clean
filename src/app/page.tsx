@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { profile, sections, type ProjectItem } from "./links";
 import TypingAnimation from "@/components/TypingAnimation";
 import { useTheme } from "@/hooks/useTheme";
@@ -152,7 +153,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-neutral-900 dark:bg-[#0a0a0a] dark:text-neutral-100 font-sans antialiased relative overflow-x-hidden">
+    <div id="main-content" className="min-h-screen bg-white text-neutral-900 dark:bg-[#0a0a0a] dark:text-neutral-100 font-sans antialiased relative overflow-x-hidden">
       {/* Ambient Vercel Mesh Glow Backdrop */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] pointer-events-none z-0 opacity-70">
         <div className={`w-full h-full transition-all duration-300 ${theme === "dark" ? "ambient-glow-dark" : "ambient-glow"}`} />
@@ -170,7 +171,7 @@ export default function Home() {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">
             <a href="#about" className="text-sm text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors">
               {t.about}
             </a>
@@ -199,27 +200,30 @@ export default function Home() {
             </a>
 
             {/* Language Switcher Button */}
-            <button 
+            <button
               onClick={toggleLanguage}
               className="px-2.5 py-1.5 rounded border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors text-xs font-mono font-semibold"
-              title="Switch Language"
+              aria-label="Switch language"
             >
               {lang.toUpperCase()}
             </button>
 
             {/* Dark Mode Switcher Button */}
-            <button 
+            <button
               onClick={toggleTheme}
               className="p-1.5 rounded border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors"
-              title="Toggle Theme"
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
             >
               {theme === "dark" ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-neutral-500" />}
             </button>
 
             {/* Mobile Hamburger menu icon */}
-            <button 
+            <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-1.5 rounded border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors md:hidden"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -229,7 +233,7 @@ export default function Home() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 top-16 z-40 bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-lg md:hidden transition-all duration-300">
+        <div id="mobile-menu" className="fixed inset-0 top-16 z-40 bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-lg md:hidden transition-all duration-300" role="dialog" aria-modal="true" aria-label="Mobile navigation menu">
           <div className="flex flex-col p-6 gap-6">
             <a 
               href="#about" 
@@ -272,10 +276,13 @@ export default function Home() {
       {/* Hero Section */}
       <section className="max-w-5xl mx-auto px-4 pt-16 pb-12 z-10 relative flex flex-col items-center text-center">
         <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-neutral-200 dark:border-neutral-800 mb-6 bg-neutral-100 dark:bg-neutral-900">
-          <img 
-            src={profile.avatarUrl} 
-            alt={profile.name} 
+          <Image
+            src={profile.avatarUrl}
+            alt={`${profile.name} profile photo`}
+            width={96}
+            height={96}
             className="w-full h-full object-cover"
+            priority
           />
         </div>
         <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-none text-neutral-900 dark:text-white mb-2 selection:bg-neutral-800 selection:text-white dark:selection:bg-neutral-200 dark:selection:text-black">

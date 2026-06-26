@@ -15,6 +15,12 @@ const geistMono = localFont({
 
 const BASE_URL = "https://curzy.dev";
 
+// Alternate locale hreflang
+const ALTERNATE_LOCALES = [
+  { lang: "en", href: `${BASE_URL}` },
+  { lang: "id", href: `${BASE_URL}/?hl=id` },
+];
+
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
@@ -41,6 +47,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
+    alternateLocale: "id_ID",
     url: BASE_URL,
     siteName: "Curzy Portfolio",
     title: "Yuken Velino — Full-Stack Developer",
@@ -48,7 +55,7 @@ export const metadata: Metadata = {
       "Full-Stack Developer & Informatics Student. 50 Projects Challenge, automation, and production-grade applications.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.svg",
         width: 1200,
         height: 630,
         alt: "Yuken Velino Portfolio",
@@ -60,7 +67,7 @@ export const metadata: Metadata = {
     title: "Yuken Velino — Full-Stack Developer",
     description:
       "Full-Stack Developer & Informatics Student. 50 Projects Challenge, automation, and production-grade applications.",
-    images: ["/og-image.png"],
+    images: ["/og-image.svg"],
     creator: "@curzyori",
   },
   robots: {
@@ -75,11 +82,11 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
   },
-  verification: {
-    google: "your-google-site-verification-id", // replace with actual ID
+  alternates: {
+    languages: Object.fromEntries(ALTERNATE_LOCALES.map(({ lang, href }) => [lang, href])),
   },
 };
 
@@ -119,10 +126,18 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Skip to main content - accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-blue-500 focus:text-white focus:rounded-lg focus:font-mono focus:text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+          Skip to main content
+        </a>
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
