@@ -21,8 +21,9 @@ export interface LinkItem {
 }
 
 export interface ProjectLink {
-  type: 'repo' | 'web' | 'download';
+  type: 'repo' | 'web' | 'download' | 'contact';
   url: string;
+  label?: string;
 }
 
 export interface ProjectItem {
@@ -99,13 +100,26 @@ export const sections: LinkSection[] = [
     title: "Projects",
     items: [
       {
+        id: "zero-cache",
+        projectNumber: "#16",
+        label: "ZeroCache",
+        description: "ZeroCache - One-tap Android cache cleaner with Root & No-Root modes. Apache 2.0.",
+        isFavorite: false,
+        tags: ["Kotlin", "Android", "Root", "Utility", "Open Source", "Privacy"],
+        links: [
+          { type: "web", url: "https://zero-cache.curzy.dev/" },
+          { type: "repo", url: "https://github.com/Curzyori/zero-cache" }
+        ]
+      },
+      {
         id: "pass-qr",
         projectNumber: "#15",
         label: "PassQR",
         description: "PassQR - Instant QR to Web & App access. Scan any QR code to open in browser or in-app WebView. Supports English and Indonesian.",
-        isFavorite: true,
+        isFavorite: false,
         tags: ["Kotlin", "Android", "WebView", "QR Code", "Open Source", "Privacy"],
         links: [
+          { type: "web", url: "https://pass-qr.curzy.dev/" },
           { type: "repo", url: "https://github.com/Curzyori/pass-qr" }
         ]
       },
@@ -114,11 +128,12 @@ export const sections: LinkSection[] = [
         projectNumber: "#14",
         label: "PharmaStock",
         description: "Sistem Manajemen Inventaris & Keuangan Apotek — Dashboard finansial, deteksi stok kritis, RBAC multi-role, PPN/PPh otomatis.",
-        isFavorite: true,
+        isFavorite: false,
         tags: ["Python", "Flask", "Healthcare", "Pharmacy", "Finance", "PWA", "Dashboard", "Open Source", "Supabase"],
         links: [
-          { type: "web", url: "https://pharma-stock.curzy.dev/" },
-          { type: "repo", url: "https://github.com/Curzyori/pharma-stock" }
+          { type: "web", url: "https://pharma-stock.curzy.dev/", label: "Demo" },
+          { type: "repo", url: "https://github.com/Curzyori/pharma-stock", label: "Shadow Code" },
+          { type: "contact", url: "https://curzy.dev/#contact", label: "Contact" }
         ]
       },
       {
@@ -126,7 +141,7 @@ export const sections: LinkSection[] = [
         projectNumber: "#13",
         label: "Github Searcher",
         description: "Asynchronous GitHub repository & code scanner CLI with Dual-Engine (Browser Session & API Token). Built with Python asyncio.",
-        isFavorite: true,
+        isFavorite: false,
         tags: ["Python", "Git", "Scraper", "CLI", "API", "Asyncio", "Automation", "Open Source"],
         links: [
           { type: "repo", url: "https://github.com/Curzyori/github-searcher" }
@@ -140,6 +155,7 @@ export const sections: LinkSection[] = [
         isFavorite: true,
         tags: ["TypeScript", "Next.js", "Tailwind CSS", "Portfolio", "Template", "Terminal", "Glass UI", "Open Source"],
         links: [
+          { type: "web", url: "https://portofolio-12.curzy.dev/" },
           { type: "repo", url: "https://github.com/Curzyori/portofolio-template" }
         ]
       },
@@ -151,8 +167,8 @@ export const sections: LinkSection[] = [
         isFavorite: true,
         tags: ["React", "Express", "TypeScript", "AI", "Chatbot", "Automation", "Open Source", "Supabase"],
         links: [
-          { type: "web", url: "https://c-lync-266408539680.asia-southeast1.run.app" },
-          { type: "repo", url: "https://github.com/Curzyori/c-lync" }
+          { type: "web", url: "https://c-lync-266408539680.asia-southeast1.run.app/" },
+          { type: "repo", url: "https://github.com/Curzyori/c-lync", label: "Shadow Code" }
         ]
       },
       {
@@ -163,7 +179,7 @@ export const sections: LinkSection[] = [
         isFavorite: true,
         tags: ["Kotlin", "Android", "Accessibility", "Privacy", "Volume Control", "Open Source"],
         links: [
-          { type: "download", url: "https://github.com/Curzyori/float-volume/tree/main/version" },
+          { type: "web", url: "https://float-volume.curzy.dev/" },
           { type: "repo", url: "https://github.com/Curzyori/float-volume" }
         ]
       },
@@ -172,7 +188,7 @@ export const sections: LinkSection[] = [
         projectNumber: "#09",
         label: "Check IP",
         description: "Fast, simple, and beautiful web tool to check your public IP address and lookup any IP. Instantly shows IP, location, ISP, and timezone. Built with Next.js.",
-        isFavorite: false,
+        isFavorite: true,
         tags: ["TypeScript", "Next.js", "Tailwind CSS", "IP Checker", "Geolocation", "Networking Tool"],
         links: [
           { type: "web", url: "https://checkip.curzy.dev" },
@@ -198,7 +214,7 @@ export const sections: LinkSection[] = [
         isFavorite: true,
         tags: ["TypeScript", "Next.js", "Downloader", "Spotify", "Instagram", "YouTube", "TikTok", "Open Source"],
         links: [
-          { type: "web", url: "https://4mate.curzy.dev" },
+          { type: "web", url: "https://4-mate.curzy.dev" },
           { type: "repo", url: "https://github.com/Curzyori/4-mate" }
         ]
       },
@@ -210,6 +226,7 @@ export const sections: LinkSection[] = [
         isFavorite: false,
         tags: ["Astro", "React", "Markdown", "MDX", "Storyboard", "Content Generator"],
         links: [
+          { type: "web", url: "https://c-story.curzy.dev" },
           { type: "repo", url: "https://github.com/Curzyori/c-story" }
         ]
       },
@@ -221,6 +238,7 @@ export const sections: LinkSection[] = [
         isFavorite: false,
         tags: ["JavaScript", "React", "Vite", "Calculator", "Finance App", "MathJS", "CLI", "Python"],
         links: [
+          { type: "web", url: "https://c-math.curzy.dev" },
           { type: "repo", url: "https://github.com/Curzyori/c-math" }
         ]
       },
@@ -232,6 +250,7 @@ export const sections: LinkSection[] = [
         isFavorite: false,
         tags: ["JavaScript", "React", "Express", "Glassmorphism", "Audio", "Music Player", "Visualization"],
         links: [
+          { type: "web", url: "https://c-flow.curzy.dev" },
           { type: "repo", url: "https://github.com/Curzyori/c-flow" }
         ]
       },
@@ -265,6 +284,7 @@ export const sections: LinkSection[] = [
         isFavorite: false,
         tags: ["JavaScript", "React", "Express", "Modular Monolith", "SQLite", "Survival Game", "Time Manipulation"],
         links: [
+          { type: "web", url: "https://zafkiel-arcade.curzy.dev" },
           { type: "repo", url: "https://github.com/Curzyori/zafkiel-arcade" }
         ]
       }
