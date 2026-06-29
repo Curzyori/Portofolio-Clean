@@ -106,6 +106,21 @@ export const sections: LinkSection[] = [
     title: "Projects",
     items: [
       {
+        id: "morsify",
+        projectNumber: "#17",
+        label: "Morsify",
+        description: {
+          en: "Morse code transmitter for Android with Flashlight & Sound modes. Built with Kotlin and Material Design 3.",
+          id: "Pengirim kode Morse untuk Android dengan mode Senter & Suara. Dibangun dengan Kotlin dan Material Design 3."
+        },
+        isFavorite: true,
+        tags: ["Kotlin", "Android", "Morse Code", "Utility", "Open Source"],
+        links: [
+          { type: "web", url: "https://morsify.curzy.dev/" },
+          { type: "repo", url: "https://github.com/Curzyori/morsify" }
+        ]
+      },
+      {
         id: "zero-cache",
         projectNumber: "#16",
         label: "ZeroCache",
@@ -113,7 +128,7 @@ export const sections: LinkSection[] = [
           en: "ZeroCache - One-tap Android cache cleaner with Root & No-Root modes. Apache 2.0.",
           id: "ZeroCache - Pembersih cache Android sekali ketuk dengan mode Root & Tanpa Root. Apache 2.0."
         },
-        isFavorite: false,
+        isFavorite: true,
         tags: ["Kotlin", "Android", "Root", "Utility", "Open Source", "Privacy"],
         links: [
           { type: "web", url: "https://zero-cache.curzy.dev/" },
@@ -128,7 +143,7 @@ export const sections: LinkSection[] = [
           en: "PassQR - Instant QR to Web & App access. Scan any QR code to open in browser or in-app WebView. Supports English and Indonesian.",
           id: "PassQR - Akses instan QR ke Web & Aplikasi. Pindai kode QR apa pun untuk membukanya di browser atau WebView bawaan aplikasi. Mendukung bahasa Inggris dan Indonesia."
         },
-        isFavorite: false,
+        isFavorite: true,
         tags: ["Kotlin", "Android", "WebView", "QR Code", "Open Source", "Privacy"],
         links: [
           { type: "web", url: "https://pass-qr.curzy.dev/" },
@@ -143,7 +158,7 @@ export const sections: LinkSection[] = [
           en: "Pharmacy Inventory & Financial Management System — Financial dashboard, critical stock detection, multi-role RBAC, and automated VAT/Income Tax calculations.",
           id: "Sistem Manajemen Inventaris & Keuangan Apotek — Dashboard finansial, deteksi stok kritis, RBAC multi-role, PPN/PPh otomatis."
         },
-        isFavorite: false,
+        isFavorite: true,
         tags: ["Python", "Flask", "Healthcare", "Pharmacy", "Finance", "PWA", "Dashboard", "Open Source", "Supabase"],
         links: [
           { type: "web", url: "https://pharma-stock.curzy.dev/", label: "Demo" },
@@ -159,7 +174,7 @@ export const sections: LinkSection[] = [
           en: "Asynchronous GitHub repository & code scanner CLI with Dual-Engine (Browser Session & API Token). Built with Python asyncio.",
           id: "Pemindai repositori & kode GitHub asinkron berbasis CLI dengan Dual-Engine (Sesi Browser & Token API). Dibuat dengan Python asyncio."
         },
-        isFavorite: false,
+        isFavorite: true,
         tags: ["Python", "Git", "Scraper", "CLI", "API", "Asyncio", "Automation", "Open Source"],
         links: [
           { type: "repo", url: "https://github.com/Curzyori/github-searcher" }
