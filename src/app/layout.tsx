@@ -55,7 +55,7 @@ export const metadata: Metadata = {
       "Full-Stack Developer & Informatics Student. 50 Projects Challenge, automation, and production-grade applications.",
     images: [
       {
-        url: "/og-image.svg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Yuken Velino Portfolio",
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     title: "Yuken Velino — Full-Stack Developer",
     description:
       "Full-Stack Developer & Informatics Student. 50 Projects Challenge, automation, and production-grade applications.",
-    images: ["/og-image.svg"],
+    images: ["/og-image.png"],
     creator: "@curzyori",
   },
   robots: {

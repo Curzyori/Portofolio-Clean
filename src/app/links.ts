@@ -90,7 +90,7 @@ export const sections: LinkSection[] = [
         icon: "fa-shopping-bag",
         description: {
           en: "Global digital marketplace and development agency prepared exclusively with Web3/Crypto payment gateways (no fiat/local methods). It serves as a distribution hub for premium digital assets such as automation scripts, CLI tools, website templates, premium applications (from the 50 Projects Challenge), and commercial computing services.",
-          id: "Global digital marketplace and development agency disiapkan eksklusif dengan payment gateway berbasis Web3/Crypto (tanpa fiat/metode lokal). Menjadi pusat distribusi aset digital premium seperti Automation Scripts, CLI tools, Template Website, aplikasi Premium dari 50 Projects Challenge, hingga layanan komersial komputasi."
+          id: "Marketplace digital global dan agensi pengembangan yang disiapkan secara eksklusif dengan payment gateway berbasis Web3/Crypto (tanpa metode fiat/lokal). Menjadi pusat distribusi aset digital premium seperti Script Otomatisasi, CLI Tools, Template Website, aplikasi Premium dari 50 Projects Challenge, hingga layanan komersial komputasi."
         },
         isExternal: true,
         isFavorite: false,

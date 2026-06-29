@@ -153,6 +153,7 @@ export default function ProjectFilter({ projects, lang, translations: t }: Proje
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value as SortType)}
           className="px-3 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          aria-label={t.sortBy}
         >
           <option value="default">{t.sortDefault}</option>
           <option value="number-asc"># {t.sortNumAsc}</option>
@@ -166,6 +167,7 @@ export default function ProjectFilter({ projects, lang, translations: t }: Proje
       <div className="flex flex-wrap gap-2">
         <button
           onClick={() => { setActiveFilter("all"); setActiveTag(null); }}
+          aria-pressed={activeFilter === "all" && !activeTag}
           className={`px-3 py-1.5 rounded-full text-xs font-mono transition-colors ${
             activeFilter === "all" && !activeTag
               ? "bg-blue-500 text-white"
@@ -176,6 +178,7 @@ export default function ProjectFilter({ projects, lang, translations: t }: Proje
         </button>
         <button
           onClick={() => { setActiveFilter("favorites"); setActiveTag(null); }}
+          aria-pressed={activeFilter === "favorites"}
           className={`px-3 py-1.5 rounded-full text-xs font-mono transition-colors ${
             activeFilter === "favorites"
               ? "bg-yellow-500 text-white"
@@ -186,6 +189,7 @@ export default function ProjectFilter({ projects, lang, translations: t }: Proje
         </button>
         <button
           onClick={() => { setActiveFilter("web"); setActiveTag(null); }}
+          aria-pressed={activeFilter === "web"}
           className={`px-3 py-1.5 rounded-full text-xs font-mono transition-colors ${
             activeFilter === "web"
               ? "bg-green-500 text-white"
@@ -196,6 +200,7 @@ export default function ProjectFilter({ projects, lang, translations: t }: Proje
         </button>
         <button
           onClick={() => { setActiveFilter("mobile"); setActiveTag(null); }}
+          aria-pressed={activeFilter === "mobile"}
           className={`px-3 py-1.5 rounded-full text-xs font-mono transition-colors ${
             activeFilter === "mobile"
               ? "bg-purple-500 text-white"
@@ -206,6 +211,7 @@ export default function ProjectFilter({ projects, lang, translations: t }: Proje
         </button>
         <button
           onClick={() => { setActiveFilter("cli"); setActiveTag(null); }}
+          aria-pressed={activeFilter === "cli"}
           className={`px-3 py-1.5 rounded-full text-xs font-mono transition-colors ${
             activeFilter === "cli"
               ? "bg-orange-500 text-white"
@@ -230,6 +236,7 @@ export default function ProjectFilter({ projects, lang, translations: t }: Proje
                 setActiveFilter("all");
               }
             }}
+            aria-pressed={activeTag === tag}
             className={`px-3 py-1.5 rounded-full text-[10px] font-mono transition-colors ${
               activeTag === tag
                 ? "bg-blue-500 text-white"

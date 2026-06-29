@@ -123,6 +123,11 @@ export default function Home() {
     setLang((prev) => (prev === "en" ? "id" : "en"));
   };
 
+  // Sync <html lang> attribute for SEO
+  React.useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
   const getStatusLabel = (status?: string) => {
     if (!status) return "";
     switch (status) {
@@ -345,10 +350,16 @@ export default function Home() {
                 {t.challengeDesc}
               </p>
               <div className="mt-4 flex items-center gap-3">
-                <div className="w-full bg-neutral-200 dark:bg-neutral-800 h-2 rounded-full overflow-hidden">
+                <div 
+                  className="w-full bg-neutral-200 dark:bg-neutral-800 h-2 rounded-full overflow-hidden"
+                  role="progressbar"
+                  aria-valuenow={completedProjectsCount}
+                  aria-valuemax={totalProjectsLimit}
+                  aria-label={t.challengeProgress}
+                >
                   <div 
                     className="bg-blue-500 h-full rounded-full transition-all duration-500" 
-                    style={{ width: `${(completedProjectsCount / totalProjectsLimit) * 100}%` }}
+                    style={{ width: `${(completedProjectsCount / totalProjectsLimit) * 100}%` }} 
                   />
                 </div>
                 <span className="font-mono text-xs font-semibold text-neutral-700 dark:text-neutral-300">
@@ -530,7 +541,7 @@ motto: "${profile.philosophy}"`}
         <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white mb-6">
           {t.contact}
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" role="list" aria-label={t.contact}>
           {sections.find((s) => s.id === "contact")?.items.map((link) => {
             const l = link as ContactItem;
             return (
