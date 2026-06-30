@@ -24,7 +24,7 @@ export default function Home() {
   // Set project total count and completed count
   const totalProjectsLimit = 50;
   const projectsList = sections.find((s) => s.id === "projects")?.items || [];
-  const completedProjectsCount = projectsList.length; // 15 projects
+  const completedProjectsCount = projectsList.length; // 17 projects
 
   const translations = {
     en: {
