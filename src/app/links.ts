@@ -121,6 +121,21 @@ export const sections: LinkSection[] = [
         ]
       },
       {
+        id: "spec-md",
+        projectNumber: "#18",
+        label: "SpecMD",
+        description: {
+          en: "One tap. Device specs to Markdown. Extract Android device specifications and export to clean Markdown format. Perfect for bug reports, tech reviews, and marketplace listings.",
+          id: "1x tap. Specs HP ke Markdown. Extract spesifikasi perangkat Android dan export ke format Markdown yang rapi. Cocok buat bug reports, review HP, dan listing barang."
+        },
+        isFavorite: true,
+        tags: ["Kotlin", "Android", "Compose", "MD3", "Markdown", "Bug Report", "Open Source"],
+        links: [
+          { type: "web", url: "https://spec-md.curzy.dev" },
+          { type: "repo", url: "https://github.com/Curzyori/spec-md" }
+        ]
+      },
+      {
         id: "zero-cache",
         projectNumber: "#16",
         label: "ZeroCache",
