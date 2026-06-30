@@ -106,21 +106,6 @@ export const sections: LinkSection[] = [
     title: "Projects",
     items: [
       {
-        id: "morsify",
-        projectNumber: "#17",
-        label: "Morsify",
-        description: {
-          en: "Morse code transmitter for Android with Flashlight & Sound modes. Built with Kotlin and Material Design 3.",
-          id: "Pengirim kode Morse untuk Android dengan mode Senter & Suara. Dibangun dengan Kotlin dan Material Design 3."
-        },
-        isFavorite: true,
-        tags: ["Kotlin", "Android", "Morse Code", "Utility", "Open Source"],
-        links: [
-          { type: "web", url: "https://morsify.curzy.dev/" },
-          { type: "repo", url: "https://github.com/Curzyori/morsify" }
-        ]
-      },
-      {
         id: "spec-md",
         projectNumber: "#18",
         label: "SpecMD",
@@ -133,6 +118,21 @@ export const sections: LinkSection[] = [
         links: [
           { type: "web", url: "https://spec-md.curzy.dev" },
           { type: "repo", url: "https://github.com/Curzyori/spec-md" }
+        ]
+      },
+      {
+        id: "morsify",
+        projectNumber: "#17",
+        label: "Morsify",
+        description: {
+          en: "Morse code transmitter for Android with Flashlight & Sound modes. Built with Kotlin and Material Design 3.",
+          id: "Pengirim kode Morse untuk Android dengan mode Senter & Suara. Dibangun dengan Kotlin dan Material Design 3."
+        },
+        isFavorite: true,
+        tags: ["Kotlin", "Android", "Morse Code", "Utility", "Open Source"],
+        links: [
+          { type: "web", url: "https://morsify.curzy.dev/" },
+          { type: "repo", url: "https://github.com/Curzyori/morsify" }
         ]
       },
       {
