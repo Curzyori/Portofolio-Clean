@@ -13,7 +13,7 @@ interface ProjectItem {
   links: { type: string; url: string; label?: string }[];
 }
 
-type FilterType = "all" | "favorites" | "web" | "mobile" | "cli" | "featured";
+type FilterType = "all" | "favorites" | "web" | "mobile" | "cli";
 type SortType = "default" | "number-asc" | "number-desc" | "name-asc" | "name-desc";
 
 interface ProjectFilterProps {
@@ -26,7 +26,6 @@ interface ProjectFilterProps {
     web: string;
     mobile: string;
     cli: string;
-    featured: string;
     sortBy: string;
     sortDefault: string;
     sortNumAsc: string;

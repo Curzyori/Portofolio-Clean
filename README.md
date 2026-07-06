@@ -191,21 +191,6 @@ Template premium mobile-first link hub dan portfolio developer statis dengan int
 </tr>
 <tr>
 <td width="50%" valign="top">
-
-### 💬 #11 | C Lync
-**SaaS Utama**
-
-`React` `TypeScript` `Supabase`
-
-Aplikasi web manajemen dan otomatisasi pesan atau grup WhatsApp. Dilengkapi fitur asisten cerdas berbasis Google AI Gemini untuk merangkum obrolan panjang (chat overload) secara otomatis dan asinkron.
-
-<a href="https://c-lync-266408539680.asia-southeast1.run.app/">
-  <img src="https://img.shields.io/badge/KUNJUNGI_SITUS-%2358A6FF?style=for-the-badge" />
-</a>
-
-</td>
-<td width="50%" valign="top">
-
 ### 📋 #18 | SpecMD
 **Android App**
 
@@ -218,26 +203,6 @@ Extract device specifications and export to clean Markdown format. Perfect for b
 </a>
 <br/>
 <a href="https://github.com/Curzyori/spec-md">
-  <img src="https://img.shields.io/badge/BUKA_KODE-%23181717?style=for-the-badge&logo=github&logoColor=white" />
-</a>
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-### 💼 #12 | Portfolio
-**Portfolio Hub**
-
-`Next.js` `TypeScript` `Tailwind CSS`
-
-Template premium mobile-first link hub dan portfolio developer statis dengan integrasi filter hierarki bertingkat.
-
-<a href="https://portofolio-12.curzy.dev/">
-  <img src="https://img.shields.io/badge/KUNJUNGI_SITUS-%2358A6FF?style=for-the-badge" />
-</a>
-<br/>
-<a href="https://github.com/Curzyori/Portofolio-12">
   <img src="https://img.shields.io/badge/BUKA_KODE-%23181717?style=for-the-badge&logo=github&logoColor=white" />
 </a>
 

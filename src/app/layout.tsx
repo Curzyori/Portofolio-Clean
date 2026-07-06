@@ -138,6 +138,12 @@ export default function RootLayout({
           Skip to main content
         </a>
 
+        {/* Prevent flash of light theme on load */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem("theme")||"dark";document.documentElement.className=t})()`
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

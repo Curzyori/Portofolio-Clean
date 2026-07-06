@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { profile, sections, type ProjectItem } from "./links";
 import TypingAnimation from "@/components/TypingAnimation";
@@ -18,6 +18,11 @@ import {
 
 export default function Home() {
   const [lang, setLang] = useState<"en" | "id">("en");
+  // Persist language preference
+  useEffect(() => {
+    const stored = localStorage.getItem("lang") as "en" | "id" | null;
+    if (stored) setLang(stored);
+  }, []);
   const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -123,9 +128,10 @@ export default function Home() {
     setLang((prev) => (prev === "en" ? "id" : "en"));
   };
 
-  // Sync <html lang> attribute for SEO
-  React.useEffect(() => {
+  // Sync <html lang> attribute for SEO, persist to localStorage
+  useEffect(() => {
     document.documentElement.lang = lang;
+    localStorage.setItem("lang", lang);
   }, [lang]);
 
   const getStatusLabel = (status?: string) => {
@@ -480,7 +486,6 @@ motto: "${profile.philosophy}"`}
             web: t.filterWeb,
             mobile: t.filterMobile,
             cli: t.filterCli,
-            featured: t.featured,
             sortBy: t.sortBy,
             sortDefault: t.sortDefault,
             sortNumAsc: t.sortNumAsc,
@@ -550,7 +555,7 @@ motto: "${profile.philosophy}"`}
                 href={l.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 bg-white dark:bg-[#0a0a0a] hover:border-neutral-300 dark:hover:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-900/30 transition-all flex flex-col justify-between min-h-[90px]"
+                className="group border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 bg-white dark:bg-[#0a0a0a] hover:border-neutral-300 dark:hover:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-900/30 transition-all flex flex-col justify-between min-h-[90px]"
               >
                 <span className="font-semibold text-sm text-neutral-900 dark:text-white">
                   {l.label}
