@@ -83,7 +83,7 @@ export default function ProjectFilter({ projects, lang, translations: t }: Proje
         p.tags.some((tag) => tag.includes("Android") || tag.includes("Kotlin"))
       );
     } else if (activeFilter === "cli") {
-      result = result.filter((p) => p.tags.some((tag) => tag === "CLI" || tag === "Python"));
+      result = result.filter((p) => p.tags.some((tag) => tag.toLowerCase() === "cli" || tag.toLowerCase() === "python"));
     }
 
     // Tag filter
