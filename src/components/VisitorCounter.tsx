@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 const WORKSPACE = "curzy-antigravitys-team-4710";
 const COUNTER = "first-counter-4710";
-const API = `https://api.counterapi.dev/v2/${WORKSPACE}/${COUNTER}`;
+const BASE = `https://api.counterapi.dev/v1/${WORKSPACE}/${COUNTER}`;
 
 export default function VisitorCounter() {
   const [count, setCount] = useState<number | null>(null);
@@ -14,15 +14,9 @@ export default function VisitorCounter() {
     if (done.current) return;
     done.current = true;
 
-    const headers: Record<string, string> = {
-      "Content-Type": "application/json",
-    };
-    const token = process.env.NEXT_PUBLIC_COUNTER_TOKEN;
-    if (token) headers["Authorization"] = `Bearer ${token}`;
-
-    fetch(`${API}/up`, { headers })
-      .then((r) => r.json() as Promise<{ data: { up_count: number } }>)
-      .then((res) => setCount(res.data.up_count))
+    fetch(`${BASE}/up`)
+      .then((r) => r.json() as Promise<{ count: number }>)
+      .then((res) => setCount(res.count))
       .catch(() => setCount(0));
   }, []);
 
