@@ -6,6 +6,7 @@ import { profile, sections, type ProjectItem } from "./links";
 import TypingAnimation from "@/components/TypingAnimation";
 import { useTheme } from "@/hooks/useTheme";
 import ProjectFilter from "@/components/ProjectFilter";
+import VisitorCounter from "@/components/VisitorCounter";
 import { 
   Menu, 
   X, 
@@ -311,9 +312,11 @@ export default function Home() {
         <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-none text-neutral-900 dark:text-white mb-2 selection:bg-neutral-800 selection:text-white dark:selection:bg-neutral-200 dark:selection:text-black">
           {profile.name}
         </h1>
-        <p className="font-mono text-xs text-neutral-500 dark:text-neutral-400 max-w-lg mb-6">
+        <p className="font-mono text-xs text-neutral-500 dark:text-neutral-400 max-w-lg mb-2">
           {profile.role}
         </p>
+
+        <VisitorCounter />
 
         {/* Dynamic Typing Animation */}
         <div className="w-full max-w-md mx-auto">
