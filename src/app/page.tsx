@@ -316,7 +316,7 @@ export default function Home() {
           {profile.role}
         </p>
 
-        <VisitorCounter />
+        <VisitorCounter lang={lang} />
 
         {/* Dynamic Typing Animation */}
         <div className="w-full max-w-md mx-auto">

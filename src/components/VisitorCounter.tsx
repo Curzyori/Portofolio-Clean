@@ -6,7 +6,12 @@ const WORKSPACE = "curzy-antigravitys-team-4710";
 const COUNTER = "first-counter-4710";
 const BASE = `https://api.counterapi.dev/v1/${WORKSPACE}/${COUNTER}`;
 
-export default function VisitorCounter() {
+const LABELS = {
+  en: "visitors",
+  id: "pengunjung",
+};
+
+export default function VisitorCounter({ lang = "en" }: { lang?: "en" | "id" }) {
   const [count, setCount] = useState<number | null>(null);
   const done = useRef(false);
 
@@ -25,9 +30,9 @@ export default function VisitorCounter() {
   return (
     <span
       className="font-mono text-xs text-neutral-500 dark:text-neutral-400"
-      title={`${count.toLocaleString()} total visitors`}
+      title={`${count.toLocaleString()} total ${LABELS[lang]}`}
     >
-      {count.toLocaleString()} visitors
+      {count.toLocaleString()} {LABELS[lang]}
     </span>
   );
 }
