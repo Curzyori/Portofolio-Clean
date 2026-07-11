@@ -106,6 +106,21 @@ export const sections: LinkSection[] = [
     title: "Projects",
     items: [
       {
+        id: "ex-apk",
+        projectNumber: "#19",
+        label: "ExAPK",
+        description: {
+          en: "Extract and backup APKs from your Android device without root access. Batch extraction, easy sharing, and offline backup. Perfect for QA testing, archiving, or sharing apps with friends.",
+          id: "Ekstrak dan backup APK dari perangkat Android tanpa akses root. Ekstraksi batch, berbagi mudah, dan cadangan offline. Cocok untuk testing QA, arsip, atau berbagi aplikasi dengan teman."
+        },
+        isFavorite: true,
+        tags: ["Kotlin", "Android", "Compose", "APK Extractor", "Backup", "Open Source", "Utility"],
+        links: [
+          { type: "web", url: "https://ex-apk.curzy.dev/" },
+          { type: "repo", url: "https://github.com/Curzyori/ex-apk" }
+        ]
+      },
+      {
         id: "spec-md",
         projectNumber: "#18",
         label: "SpecMD",
