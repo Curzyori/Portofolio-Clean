@@ -105,7 +105,7 @@ export default function RootLayout({
     jobTitle: "Full-Stack Developer",
     description:
       "Full-Stack Developer and Informatics Student specializing in Next.js, React, TypeScript, and automation.",
-    email: "yukenvelino11@gmail.com",
+    email: "admin@curzy.dev",
     sameAs: [
       "https://github.com/Curzyori",
       "https://www.linkedin.com/in/curzy/",

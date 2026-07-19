@@ -417,8 +417,8 @@ export const sections: LinkSection[] = [
       {
         id: "email",
         label: "Email",
-        description: "yukenvelino11@gmail.com",
-        url: "mailto:yukenvelino11@gmail.com",
+        description: "admin@curzy.dev",
+        url: "mailto:admin@curzy.dev",
         isExternal: true,
       },
       {
