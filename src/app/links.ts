@@ -106,6 +106,21 @@ export const sections: LinkSection[] = [
     title: "Projects",
     items: [
       {
+        id: "rm-bg",
+        projectNumber: "#20",
+        label: "RM-BG",
+        description: {
+          en: "Local background remover & AI watermark stripper — 100% in-browser. Remove background using client-side WASM and strip Gemini or NotebookLM watermarks instantly.",
+          id: "Penghapus background & pembersih watermark AI lokal — 100% di browser. Hapus background menggunakan WASM client-side dan bersihkan watermark Gemini atau NotebookLM secara instan."
+        },
+        isFavorite: true,
+        tags: ["JavaScript", "Vite", "WASM", "WebGPU", "Background Removal", "AI Watermark", "Open Source", "Utility"],
+        links: [
+          { type: "web", url: "https://rm-bg.curzy.dev/" },
+          { type: "repo", url: "https://github.com/Curzyori/rm-bg" }
+        ]
+      },
+      {
         id: "ex-apk",
         projectNumber: "#19",
         label: "ExAPK",
