@@ -106,6 +106,21 @@ export const sections: LinkSection[] = [
     title: "Projects",
     items: [
       {
+        id: "hour-share",
+        projectNumber: "#21",
+        label: "Hour Share",
+        description: {
+          en: "Share files & text across devices via QR code — no internet, no login. Features password protection, automatic 60-minute cleanup, TUI control menu, and OS auto-start daemon.",
+          id: "Berbagi file & teks antar perangkat via QR code — tanpa internet, tanpa login. Dilengkapi proteksi password, penghapusan otomatis 60 menit, menu kontrol TUI, dan daemon auto-start OS."
+        },
+        isFavorite: true,
+        tags: ["JavaScript", "Node.js", "Python", "Flask", "QR Code", "Local Share", "Utility", "Open Source"],
+        links: [
+          { type: "web", url: "https://hour-share.curzy.dev/" },
+          { type: "repo", url: "https://github.com/Curzyori/hour-share" }
+        ]
+      },
+      {
         id: "rm-bg",
         projectNumber: "#20",
         label: "RM-BG",
